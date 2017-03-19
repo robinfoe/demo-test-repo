@@ -7,7 +7,7 @@ router.get('/', function(req, res, next) {
   //res.render('index', { title: 'Express' });
   var output='hello';
   console.log(1);
-  var url='http://192.168.223.130:3001' ||  process.env.REMOTE_URL;
+  var url= process.env.REMOTE_URL || 'http://192.168.223.130:3001';
   request.post({
       url: url
     },
