@@ -3,6 +3,7 @@ var router = express.Router();
 var request = require('request');
 
 /* GET home page. */
+/*
 router.get('/', function(req, res, next) {
   //res.render('index', { title: 'Express' });
   var output='hello';
@@ -23,6 +24,11 @@ router.get('/', function(req, res, next) {
       }
   });
 //  res.send(output);
+});
+*/
+router.get('/', function(req, res, next) {
+    //res.send("svc1");
+    res.json({response:"svc1"});
 });
 
 module.exports = router;
