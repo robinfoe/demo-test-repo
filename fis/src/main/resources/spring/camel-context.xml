@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="
+       http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+       http://camel.apache.org/schema/spring       http://camel.apache.org/schema/spring/camel-spring.xsd">
+
+    <!--aggregation strategy-->
+      <bean id="myAggregationStrategy" class="io.fabric8.quickstarts.camel.MyAggregationStrategy" />
+
+    <!-- You could also define a traditional camel context here -->
+    <camelContext xmlns="http://camel.apache.org/schema/spring">
+      <propertyPlaceholder location="application.properties" id="urls" />
+        <restConfiguration bindingMode="auto" component="jetty" port="8080" enableCORS="true"/>         
+       <rest path="/say">
+          <get uri="/hello/{greetings}">
+            <to uri="direct:hello"/>
+          </get>
+          <post uri="/bye" consumes="application/json">
+            <to uri="direct:bye"/>
+          </post>
+        </rest>      
+        <route>
+            <from uri="direct:hello"/>
+            <log message=">>> ${header.greetings}"/>
+            <!-- 
+            <transform>
+              <constant>Hello World</constant>
+            </transform> -->
+
+    <!--          <to uri="direct:svc2"/> -->
+
+    <multicast stopOnException="true" parallelProcessing="true" strategyRef="myAggregationStrategy">
+         <to uri="direct:svc1"/>
+         <to uri="direct:svc2"/>
+         <to uri="direct:svc3"/>
+    </multicast>
+
+        </route>
+        <route>
+            <from uri="direct:bye"/>
+            <log message=">>> ${body}"/>
+            <transform>
+              <constant>Bye</constant>
+            </transform>
+        </route>
+        <route id="svc1">
+            <from uri="direct:svc1" />
+            <setHeader headerName="Exchange.HTTP_METHOD">
+                <constant>GET</constant>
+            </setHeader> 
+<!--             <setHeader headerName="Exchange.HTTP_URI">
+                <constant>http://www.google.com</constant>
+            </setHeader>  -->
+            <setHeader headerName="CamelHttpPath">
+                <constant>/</constant>
+            </setHeader> 
+
+            <log message="${headers}"/>
+<!--             <to uri="http4://192.168.223.130:3000/?exchangePattern=InOut&amp;bridgeEndpoint=true" />
+ -->
+            <to uri="http4://{{svc1URL}}/?exchangePattern=InOut&amp;bridgeEndpoint=true" />
+
+
+        </route>   
+        <route id="svc2">
+            <from uri="direct:svc2" />
+            <setHeader headerName="Exchange.HTTP_METHOD">
+                <constant>GET</constant>
+            </setHeader> 
+<!--             <setHeader headerName="Exchange.HTTP_URI">
+                <constant>http://www.google.com</constant>
+            </setHeader>  -->
+            <setHeader headerName="CamelHttpPath">
+                <constant>/</constant>
+            </setHeader> 
+
+            <log message="${headers}"/>
+<!--             <to uri="http4://192.168.223.130:3000/?exchangePattern=InOut&amp;bridgeEndpoint=true" />
+ -->
+            <to uri="http4://{{svc2URL}}/?exchangePattern=InOut&amp;bridgeEndpoint=true" />
+
+
+        </route>   
+        <route id="svc3">
+            <from uri="direct:svc3" />
+            <setHeader headerName="Exchange.HTTP_METHOD">
+                <constant>GET</constant>
+            </setHeader> 
+<!--             <setHeader headerName="Exchange.HTTP_URI">
+                <constant>http://www.google.com</constant>
+            </setHeader>  -->
+            <setHeader headerName="CamelHttpPath">
+                <constant>/</constant>
+            </setHeader> 
+
+            <log message="${headers}"/>
+<!--             <to uri="http4://192.168.223.130:3000/?exchangePattern=InOut&amp;bridgeEndpoint=true" />
+ -->
+            <to uri="http4://{{svc3URL}}/?exchangePattern=InOut&amp;bridgeEndpoint=true" />
+
+
+        </route>           
+<!--  
+        <route>
+            <from uri="timer://foo?period=1000"/>
+            <setBody><simple>Hello World from camel-contex.xml</simple></setBody>
+            <log message=">>> ${body}"/>
+        </route> 
+-->        
+    </camelContext>
+
+</beans>
