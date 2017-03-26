@@ -11,7 +11,7 @@
     <!-- You could also define a traditional camel context here -->
     <camelContext xmlns="http://camel.apache.org/schema/spring">
       <propertyPlaceholder location="application.properties" id="urls" />
-        <restConfiguration bindingMode="auto" component="jetty" port="8080" enableCORS="true"/>         
+        <restConfiguration bindingMode="auto" component="jetty" port="8778" enableCORS="true"/>         
        <rest path="/say">
           <get uri="/hello/{greetings}">
             <to uri="direct:hello"/>
