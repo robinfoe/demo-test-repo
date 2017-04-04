@@ -11,6 +11,8 @@
     "debug": "~2.2.0",
     "express": "~4.14.0",
     "morgan": "~1.7.0",
+    "cors": "*",
+    "request": "*",
     "serve-favicon": "~2.3.0"
   }
 }
