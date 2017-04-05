@@ -466,7 +466,7 @@ console.log('----------------------------'+Object.keys(JSON.parse(data)));
 }
 
 function getUserInfo(uid) {
-var url=  "https://usersvc-demo.cloudapps.demo.com";
+var url=  "https://usersvc-demo.cloudapps.demo.com/users";
 
   $.ajax({
     url:url+"/"+uid,  
