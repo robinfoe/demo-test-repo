@@ -438,7 +438,7 @@ function getAddressInfo() {
         lng: marker.getPosition().lng()
     };
   //var url ="https://192.168.223.130:3002/address";
-var url=  "https://addresssvc-demo.cloudapps.demo.com";
+var url=  "https://addresssvc-demo.cloudapps.demo.com/address";
   $.ajax({
     url:url,  
     headers: {
