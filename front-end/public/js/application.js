@@ -64,7 +64,9 @@ App={
 			var video=document.getElementById("vid");	
 			var i=$('#localImg');
 			c.getContext("2d").drawImage(video, 0, 0, 150,100);
-			var img = c.toDataURL("image/png");
+			//var img = c.toDataURL("image/png");
+			var img = c.toDataURL("image/jpeg", 0.6);
+			//canvas.toDataURL('image/jpeg', 0.6);
 			i.attr('src',img);					
 		},
 		dataURItoBlob:function(dataURI) {
