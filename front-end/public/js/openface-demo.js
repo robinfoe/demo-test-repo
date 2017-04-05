@@ -408,8 +408,8 @@ function changeServerCallback() {
         socket.close();
         redrawPeople();
 //        createSocket("ws:" + window.location.hostname + ":9000", "Local");
-        //createSocket("ws://openface-ws.cloudapps.demo.com", "Local");
-           createSocket("wss://192.168.223.196:9000", "Local");
+        createSocket("wss://openface-ws.cloudapps.demo.com", "Local");
+          // createSocket("wss://192.168.223.196:9000", "Local");
         break;
     case "CMU":
         socket.close();
@@ -437,8 +437,10 @@ function getAddressInfo() {
         lat: marker.getPosition().lat(),
         lng: marker.getPosition().lng()
     };
+  //var url ="https://192.168.223.130:3002/address";
+var url=  "https://addresssvc-demo.cloudapps.demo.com";
   $.ajax({
-    url:"https://192.168.223.130:3002/address",  
+    url:url,  
     headers: {
         'Access-Control-Allow-Origin': '*',
         'Access-Control-Allow-Methods': 'GET, POST',
@@ -464,8 +466,10 @@ console.log('----------------------------'+Object.keys(JSON.parse(data)));
 }
 
 function getUserInfo(uid) {
+var url=  "https://usersvc-demo.cloudapps.demo.com";
+
   $.ajax({
-    url:"https://192.168.223.130:3001/users/"+uid,  
+    url:url+"/"+uid,  
     headers: {
         'Access-Control-Allow-Origin': '*',
         'Access-Control-Allow-Methods': 'GET, POST',
