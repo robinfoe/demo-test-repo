@@ -450,6 +450,7 @@ var url=  USER_SERVICE || "https://usersvc-demo.cloudapps.demo.com/users";
     console.log(url);
   $.ajax({
     url:url+"/"+uid,  
+    cache: false,
     headers: {
         'Access-Control-Allow-Origin': '*',
         'Access-Control-Allow-Methods': 'GET, POST',
