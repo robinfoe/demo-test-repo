@@ -11,7 +11,7 @@
     <meta name="author" content="">
     <link rel="icon" href="../../favicon.ico">
 
-    <title>Starter Template for Bootstrap</title>
+    <title>Demo</title>
 
     <!-- Bootstrap core CSS -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
@@ -65,7 +65,7 @@
     </nav>
 
     <div class="container">
-        <div class="header">
+<!--         <div class="header">
             <ul class='tabs'>
                 <li class='tab-link' data-tab='tab-preview'
                     id='tab-preview-button'>
@@ -84,14 +84,14 @@
                 <div id="detectedFaces"></div>
             </div>
         </div><!--header-->
-
+ -->
             <div class="content">
-                <h5 >People in Video</h5>
+<!--                 <h5 >People in Video</h5>
                 <div id="peopleInVideo"></div>
 
-                <div>Servers status: <span id="serverStatus"></span></div>
+                <div>Servers status: <span id="serverStatus"></span></div> -->
                 <!-- <div id="serverStatus"></div> -->
-                <div class="btn-group" role="group" id="serverBtn" style="display:none;">
+   <!--              <div class="btn-group" role="group" id="serverBtn" style="display:none;">
                     <button type="button" class="btn btn-default active">Local</button>
                 </div>
 
@@ -107,7 +107,7 @@
                             Add Person
                         </button>
                     </span>
-                </div>
+                </div> -->
                 <div>
                   <!--TSNEB-->
                    <div style="display:none">
@@ -144,8 +144,7 @@
                 </script>
 
                 <br/>
-                <div>Sample data</div>
-                <ul id="peopleInfo"></ul>
+
 
                 <br/>
                 <table class="table table-striped table-hover table-condensed"
@@ -202,7 +201,55 @@
 
     </div>
     <div class="container">
-            <div style="margin-top:450px;float:left;width:30%;">
+<!--             <div style="margin-top:450px;float:left;width:30%;">
+              <h4>Results from User Info Service</h4>
+              <div id="userInfo">
+                Nobody detected
+              </div>
+              <h4>Results from Location Info Service</h4>
+              <div id="locationInfo">
+                Nobody detected
+              </div>
+            </div> -->
+
+<!--     <div class="row" style="margin-top:450px;width: 70%; margin-left: auto; margin-right: auto;background-color: #fff;text-align: center;">
+          <div id="map" style="height: 250px;">
+          </div>        
+      </div>  --> 
+
+    </div>
+    <div class="jumbotron">
+      <div class="container">
+        <div class="row" style="margin-top:0px;width: 70%; margin-left: auto; margin-right: auto;background-color: #fff;text-align: center;">
+              <div id="map" style="height: 250px;">
+              </div>        
+          </div> 
+      </div>
+    </div>
+
+<!-- ************************-->
+
+    <div class="container">
+      <!-- Example row of columns -->
+      <div class="row">
+        <div class="col-md-6">
+          <h2>Video</h2>
+            <div id='tab-preview' class='tab-content'>
+                <video id="videoel" width="400" height="300"
+                       preload="auto" loop></video>
+            </div>
+            <div id='tab-annotated' class='tab-content current'>
+                <div id="detectedFaces"></div>
+            </div>
+
+                <h5 >People in Video</h5>
+                <div id="peopleInVideo"></div>
+
+                <div>Servers status: <span id="serverStatus"></span></div>
+        </div>
+        <div class="col-md-6">
+          <h2>User Info</h2>
+            <div style="margin-top:20px;float:left;width:100%;">
               <h4>Results from User Info Service</h4>
               <div id="userInfo">
                 Nobody detected
@@ -212,32 +259,50 @@
                 Nobody detected
               </div>
             </div>
+       </div>
+     </div> <!--row 1-->
+     <div style="row">
 
-    <div class="row" style="margin-top:450px;width: 70%; margin-left: auto; margin-right: auto;background-color: #fff;text-align: center;">
-          <div id="map" style="height: 250px;">
-          </div>        
-      </div>  
+        <div class="col-md-12">
+          <h2>Training</h2>
+              <div class="btn-group" role="group" id="serverBtn" style="display:none;">
+                    <button type="button" class="btn btn-default active">Local</button>
+                </div>
+                    <div style="float:left;">
+                        <input type="checkbox" checked data-toggle="toggle" id="trainingChk">
+                   </div>                   
+                <div class="input-group addPersonDiv">
+                    <input type="text" class="form-control" id="addPersonTxt">
+                    <span class="input-group-btn">
+                        <button class="btn btn-default" type="button"
+                                id="addPersonBtn">
+                            Add Person
+                        </button>
+                    </span>
+                </div> <!--add person div-->
 
-    </div>
-<!--
-    <div class="container">
+                <div>Sample data</div>
+                <ul id="peopleInfo"></ul>
 
-      <div class="starter-template">
-        <h1>Demo</h1>
-        <p class="lead">Face Recognition</p>
-        <video id="vid" width="200" height="150" autoplay="true">123</video>
-        <canvas id="vidcap" style="display:none;" width="200" height="150"></canvas>
-        <img id="localImg" width="200" height="150" src="" ></img>
-        <button id="b" type="button" class="btn btn-default"> <span class="glyphicon glyphicon-camera" aria-hidden="true"></span> take photo </button>
-      </div>
+        </div>
 
-    </div>
--->
-    <!-- /.container -->
+     </div><!--row 2-->
+<!-- 
 
-    <!-- Bootstrap core JavaScript
-    ================================================== -->
-    <!-- Placed at the end of the document so the pages load faster -->
+ -->     
+
+      <hr>
+
+      <footer>
+        <p>&copy; 2016 Company, Inc.</p>
+      </footer>
+    </div> <!-- /container -->
+
+
+
+<!-- ****************************-->
+
+
 <!--
     <script src="js/jquery.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
@@ -287,8 +352,13 @@
 
      // Local endpoint
      var WEBSOCKET_ENDPOINT="wss://192.168.223.196:9000";
-     var USER_SERVICE="https://192.168.223.130:3001/users";
+     //var WEBSOCKET_ENDPOINT="wss://openface-ws.cloudapps.demo.com";
+     //var USER_SERVICE="https://192.168.223.130:3001/users";
+//      var USER_SERVICE="https://usersvc-demo.cloudapps.demo.com/users";     
+     var USER_SERVICE="https://192.168.223.130:3003/users";
      var ADDRESS_SERVICE="https://192.168.223.130:3002/address";
+//      var ADDRESS_SERVICE="https://addresssvc-demo.cloudapps.demo.com/users";     
+
 
      $("#trainingChk").bootstrapToggle('off');
      $("#peopleInVideo").html("");

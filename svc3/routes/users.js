@@ -1,11 +1,12 @@
 var express = require('express');
 var router = express.Router();
 var userDB={};
+
 userDB['ws']=    {
       'id': 'ws',
       'name': 'Woh Shon',
       'age': 25,
-       'occupation': 'Red Hat' ,
+       'occupation': 'Solution Architect' ,
        'remarks': 'works in red hat' 
     };
 
@@ -49,7 +50,7 @@ router.get('/:uid', function(req, res, next) {
     //var u=req.params.uid;
 
   result=userDB[req.params.uid] || userDB['failed'];
-  }	
+  } 
     res.send(result);
 });
 

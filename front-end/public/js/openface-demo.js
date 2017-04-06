@@ -434,7 +434,7 @@ crossDomain:true,
     success:function(data) {
         var display='';
 console.log('----------------------------'+Object.keys(JSON.parse(data)));
-      $('#locationInfo').html(JSON.parse(data).formatted_address);
+      $('#locationInfo').html("<b>"+JSON.parse(data).formatted_address+"</b>");
     },//success
     error: function(e) {
         console.log("error" + e.responseText);
@@ -447,7 +447,7 @@ function getUserInfo(uid) {
 //var url ="https://192.168.223.130:3001/users";
 
 var url=  USER_SERVICE || "https://usersvc-demo.cloudapps.demo.com/users";
-
+    console.log(url);
   $.ajax({
     url:url+"/"+uid,  
     headers: {
@@ -458,7 +458,7 @@ var url=  USER_SERVICE || "https://usersvc-demo.cloudapps.demo.com/users";
 contentType: "json",
 crossDomain:true,    
     success:function(data) {
-      $('#userInfo').html(Object.keys(data).map(k => "<div>"+k +": " +data[k]+"</div>"));
+      $('#userInfo').html(Object.keys(data).map(k => "<div><b>"+k +": " +data[k]+"</b></div>"));
     }//success
   });//ajax
 
