@@ -231,8 +231,9 @@ limitations under the License.
      $("#addPersonTxt").pressEnter(addPersonCallback);
      $("#trainingChk").change(trainingChkCallback);
      $("#viewTSNEBtn").click(viewTSNECallback);
-    createSocket("wss://192.168.223.196:9000", "Local");
-
+     //var WEBSOCKET_ENDPOINT= "wss://openface-ws.openface-demo.svc.cluster.local:443";
+    //createSocket("wss://192.168.223.196:9000", "Local");
+    createSocket("wss://openface-ws.openface-demo.svc.cluster.local:443", "Local");
     </script>
 
     <div id="g"></div>
