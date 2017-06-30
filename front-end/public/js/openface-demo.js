@@ -14,6 +14,12 @@ See the License for the specific language governing permissions and
 limitations under the License.
 */
 
+//VARIABLES
+var USER_SERVICE="https://users.openface-demo.svc.cluster.local/users:8080"
+var ADDRESS_SERVICE="https://addresses.openface-demo.svc.cluster.local/address:8080"
+var WEBSOCKET_ENDPOINT= "wss://openface-ws.openface-demo.svc.cluster.local:443";
+
+
 navigator.getUserMedia = navigator.getUserMedia ||
     navigator.webkitGetUserMedia ||
     navigator.mozGetUserMedia ||
